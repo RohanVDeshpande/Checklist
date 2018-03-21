@@ -22,7 +22,8 @@ function getCurrentTime(){
 }
 
 function getGreeting(){
-	var name = "Rohan";
+	var name = document.getElementsByClassName("first-name")[0].innerHTML;
+	console.log(name);
 	var d = new Date();
 	var hours = d.getHours();
 	var output = "";

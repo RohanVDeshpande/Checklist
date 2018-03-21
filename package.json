@@ -1,0 +1,23 @@
+{
+  "name": "checklist",
+  "version": "1.0.0",
+  "description": "Checklist, taskmanager app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RohanVDeshpande/Checklist.git"
+  },
+  "author": "RohanVDeshpande",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RohanVDeshpande/Checklist/issues"
+  },
+  "homepage": "https://github.com/RohanVDeshpande/Checklist#readme",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.3"
+  }
+}
