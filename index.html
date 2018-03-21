@@ -26,6 +26,20 @@
 			margin-top:-15px;
 			font-size: 45px;
 		}
+		.checklist-wrapper{
+			width: 100%;
+			position: absolute;
+			bottom: 100px;
+			color: rgba(255,255,255);
+			font-size: 36px;
+			text-align: center;
+		}
+		.checklist-message{
+			width: 400px;
+			padding:20px;
+			border: solid white;
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
@@ -33,11 +47,18 @@
 		<div class="time"></div>
 		<div class="greeting"></div>
 	</div>
-	<p>Test Div</p>
+	<div class="checklist-wrapper">
+		<span class="checklist-message" onclick="signIn()">Sign In for Checklist</span>
+	</div>
 	<script>
 		getGreeting();
 		getCurrentTime();
 		setInterval(getCurrentTime,5000);
+	</script>
+	<script type="text/javascript">
+		function signIn(){
+			console.log('Signing In')
+		}
 	</script>
 </body>
 </html>
