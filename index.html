@@ -3,40 +3,41 @@
 <head>
 	<title>Task</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<script src="clock.js"></script>
 	<style type="text/css">
 		body{
 			background-image: url("Images/B1.jpg");
 			color: white;
 			font-family: 'Roboto', sans-serif;
+			overflow: hidden;
 		}
 		.time{
-			font-size: 165px;
+			font-size: 200px;
 			font-weight: 700;
-			text-align: center;
+			color: rgba(255,255,255,.85);
 		}
 		.time-wrapper{
 			width:100%;
 			position: absolute;
 			top: 250px;
+			text-align: center;
+		}
+		.greeting{
+			margin-top:-15px;
+			font-size: 45px;
 		}
 	</style>
 </head>
 <body>
 	<div class="time-wrapper">
 		<div class="time"></div>
+		<div class="greeting"></div>
 	</div>
 	<p>Test Div</p>
 	<script>
+		getGreeting();
 		getCurrentTime();
-		function getCurrentTime(){
-			var d = new Date();
-			var output = "";
-			output+= d.getHours();
-			output += ":";
-			output += d.getMinutes();
-			document.getElementsByClassName("time")[0].innerHTML = output;
-			setTimeout(getCurrentTime(),500);
-		}
+		setInterval(getCurrentTime,5000);
 	</script>
 </body>
 </html>
