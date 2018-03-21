@@ -23,8 +23,20 @@
 </head>
 <body>
 	<div class="time-wrapper">
-		<div class="time">10:24</div>
+		<div class="time"></div>
 	</div>
 	<p>Test Div</p>
+	<script>
+		getCurrentTime();
+		function getCurrentTime(){
+			var d = new Date();
+			var output = "";
+			output+= d.getHours();
+			output += ":";
+			output += d.getMinutes();
+			document.getElementsByClassName("time")[0].innerHTML = output;
+			setTimeout(getCurrentTime(),500);
+		}
+	</script>
 </body>
 </html>
