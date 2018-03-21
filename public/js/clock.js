@@ -29,15 +29,22 @@ function getGreeting(){
 	var output = "";
 	output += "Good ";
 	if(hours<12){
-		output+= "morning, ";
+		output+= "morning";
 	}
 	else if(hours<17){
-		output+= "afternoon, ";
+		output+= "afternoon";
 	}
 	else{
-		output+= "evening, ";
+		output+= "evening";
 	}
-	output += name;
-	output += ".";
+	if(name !=""){
+		output += ", ";
+		output += name;
+		output += ".";
+	}
+	else{
+		output+="!";
+	}
+
 	document.getElementsByClassName("greeting")[0].innerHTML = output;
 }

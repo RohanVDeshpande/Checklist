@@ -51,14 +51,19 @@
 		<div class="greeting"></div>
 	</div>
 	<div class="checklist-wrapper">
-		<a href="/auth/google"><span class="checklist-message">Sign In!</span></a>
+		<span class="checklist-message" onclick="signIn()">Sign In for Checklist</span>
 	</div>
-	<div class="first-name"></div>
+	<div class="first-name"><%=User.firstName%></div>
 
 	<script>
 		getGreeting();
 		getCurrentTime();
 		setInterval(getCurrentTime,5000);
+	</script>
+	<script type="text/javascript">
+		function signIn(){
+			console.log('Signing In')
+		}
 	</script>
 </body>
 </html>
