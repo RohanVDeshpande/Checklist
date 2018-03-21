@@ -4,6 +4,8 @@
 	<title>Task</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 	<script src="js/clock.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/arrow.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<style type="text/css">
 		body{
 			background-image: url("images/B1.jpg");
@@ -26,19 +28,13 @@
 			margin-top:-15px;
 			font-size: 45px;
 		}
-		.checklist-wrapper{
+		#to-checklist{
 			width: 100%;
+			height: 150px;
+			margin:75px 0px 25px 0px;
 			position: absolute;
-			bottom: 100px;
-			color: rgba(255,255,255);
-			font-size: 36px;
+			bottom: 0px;
 			text-align: center;
-		}
-		.checklist-message{
-			width: 400px;
-			padding:20px;
-			border: solid white;
-			cursor: pointer;
 		}
 		.first-name{
 			display: none;
@@ -46,14 +42,14 @@
 	</style>
 </head>
 <body>
+	<div class="first-name"><%=User.firstName%></div>
 	<div class="time-wrapper">
 		<div class="time"></div>
 		<div class="greeting"></div>
 	</div>
-	<div class="checklist-wrapper">
-		<span class="checklist-message" onclick="signIn()">Sign In for Checklist</span>
+	<div id="to-checklist">
+		  <p id="scroll" class="down-default"><a onclick="showChecklist()" class="animate"></a></p>
 	</div>
-	<div class="first-name"><%=User.firstName%></div>
 
 	<script>
 		getGreeting();
@@ -61,8 +57,14 @@
 		setInterval(getCurrentTime,5000);
 	</script>
 	<script type="text/javascript">
-		function signIn(){
-			console.log('Signing In')
+		$('#to-checklist').hover(
+			function(){ $('#scroll').addClass('scroll-down').removeClass('down-default')},
+			function(){ $('#scroll').removeClass('scroll-down').addClass('down-default')}
+		)
+	</script>
+	<script type="text/javascript">
+		function showChecklist(){
+			console.log('The Checklist:')
 		}
 	</script>
 </body>
