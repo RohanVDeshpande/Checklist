@@ -107,6 +107,7 @@
 			line-height: 74px;
 			font-size:32px;
 			font-weight: 300;
+			cursor: pointer;
 		}
 		.task-properties{
 			width: 45%;
@@ -132,6 +133,7 @@
 		}
 		.active-task{
 			background-color: rgba(255,255,255,.1);
+			cursor: auto;
 		}
 	</style>
 </head>
@@ -156,7 +158,7 @@
 				<div class="task-area clearfix">
 					<ul class="task-list">
 						<li class="task">HUSH HW</li>
-						<li class="task active-task">Explore Task</li>
+						<li class="task">Explore Task</li>
 					</ul>
 					<div class="task-properties">
 						<div class="add-task">New Task</div>
@@ -201,6 +203,12 @@
 			console.log('removeClass')
 			document.getElementsByClassName('slider')[0].classList.remove("slide-up");
 		}
+	</script>
+	<script type="text/javascript">
+		$('body').on('click', '.task', function () {
+			$(".task").removeClass("active-task");
+			$(this).addClass('active-task')
+	   });
 	</script>
 </body>
 </html>
