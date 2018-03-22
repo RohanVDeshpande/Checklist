@@ -217,3 +217,9 @@
 .scroll-down a:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.slide-up{
+-ms-transform: translate(0px, -50%); /* IE 9 */
+  -webkit-transform: translate(0px, -50%); /* Safari */
+  transform: translate(0px, -50%);
+}

@@ -7,7 +7,15 @@
 	<link rel="stylesheet" type="text/css" href="css/arrow.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<style type="text/css">
+		html{
+			width: 100%;
+			height: 100%;
+			margin: 0;
+		}
 		body{
+			width: 100%;
+			height: 100%;
+			margin: 0;
 			background-image: url("images/B1.jpg");
 			color: white;
 			font-family: 'Roboto', sans-serif;
@@ -39,17 +47,45 @@
 		.first-name{
 			display: none;
 		}
+		.slider{
+			width: 100%;
+			height: 200%;
+			transition: 1s ease-in-out;
+			position: relative;
+		}
+		.top-slide{
+			width: 100%;
+			height: 50%;
+			position: relative;
+		}
+		.bottom-slide{
+			width: 100%;
+			height: 50%;
+			padding: 25px;
+			background-color: rgba(0,0,0,0.5);
+			position: relative;
+		}
 	</style>
 </head>
 <body>
-	<div class="first-name"><%=User.firstName%></div>
-	<div class="time-wrapper">
-		<div class="time"></div>
-		<div class="greeting"></div>
+	<div class="slider">
+		<div class="top-slide">
+			<div class="first-name"><%=User.firstName%></div>
+			<div class="time-wrapper">
+				<div class="time"></div>
+				<div class="greeting"></div>
+			</div>
+			<div id="to-checklist">
+				<p id="scroll" class="down-default"><a onclick="showChecklist()" class="animate"></a></p>
+			</div>
+		</div>
+		<div class="bottom-slide">
+			<h1>This is a Test. Slide #2</h1>
+		</div>
+
+
 	</div>
-	<div id="to-checklist">
-		  <p id="scroll" class="down-default"><a onclick="showChecklist()" class="animate"></a></p>
-	</div>
+
 
 	<script>
 		getGreeting();
@@ -64,7 +100,8 @@
 	</script>
 	<script type="text/javascript">
 		function showChecklist(){
-			console.log('The Checklist:')
+			console.log('The Checklist:');
+			document.getElementsByClassName('slider')[0].classList.add("slide-up");
 		}
 	</script>
 </body>
