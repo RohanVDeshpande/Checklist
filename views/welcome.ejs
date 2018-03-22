@@ -104,7 +104,16 @@
 	<script>
 		getGreeting();
 		getCurrentTime();
-		setInterval(getCurrentTime,5000);
+		var d = new Date();
+		var seconds = d.getSeconds();
+		console.log(seconds);
+		setTimeout(startInterval, (60-seconds)*1000);
+
+		function startInterval(){
+			getCurrentTime();
+			setInterval(getCurrentTime,60000);
+		}
+		
 	</script>
 	<script type="text/javascript">
 		$('#to-checklist').hover(
