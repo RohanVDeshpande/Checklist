@@ -44,6 +44,14 @@
 			bottom: 0px;
 			text-align: center;
 		}
+		#to-main{
+			width: 100%;
+			height: 150px;
+			margin:25px 0px 75px 0px;
+			position: absolute;
+			top: 0px;
+			text-align: center;
+		}
 		.first-name{
 			display: none;
 		}
@@ -52,6 +60,9 @@
 			height: 200%;
 			transition: 1s ease-in-out;
 			position: relative;
+			-ms-transform: translate(0px, 0%); /* IE 9 */
+			-webkit-transform: translate(0px, 0%); /* Safari */
+			transform: translate(0px, 0%);
 		}
 		.top-slide{
 			width: 100%;
@@ -61,9 +72,9 @@
 		.bottom-slide{
 			width: 100%;
 			height: 50%;
-			padding: 25px;
 			background-color: rgba(0,0,0,0.5);
 			position: relative;
+			padding: 25px 0px 0px 0px;
 		}
 	</style>
 </head>
@@ -76,10 +87,13 @@
 				<div class="greeting"></div>
 			</div>
 			<div id="to-checklist">
-				<p id="scroll" class="down-default"><a onclick="showChecklist()" class="animate"></a></p>
+				<p id="scroll-down-main" class="down-default"><a onclick="showChecklist()" class="animate"></a></p>
 			</div>
 		</div>
 		<div class="bottom-slide">
+			<div id="to-main">
+				<p id="scroll-up-main" class="up-default"><a onclick="hideChecklist()" class="animate"></a></p>
+			</div>
 			<h1>This is a Test. Slide #2</h1>
 		</div>
 
@@ -94,14 +108,21 @@
 	</script>
 	<script type="text/javascript">
 		$('#to-checklist').hover(
-			function(){ $('#scroll').addClass('scroll-down').removeClass('down-default')},
-			function(){ $('#scroll').removeClass('scroll-down').addClass('down-default')}
-		)
+			function(){ $('#scroll-down-main').addClass('scroll-down').removeClass('down-default')},
+			function(){ $('#scroll-down-main').removeClass('scroll-down').addClass('down-default')}
+		);
+		$('#to-main').hover(
+			function(){ $('#scroll-up-main').addClass('scroll-down').removeClass('up-default')},
+			function(){ $('#scroll-up-main').removeClass('scroll-down').addClass('up-default')}
+		);
 	</script>
 	<script type="text/javascript">
 		function showChecklist(){
-			console.log('The Checklist:');
 			document.getElementsByClassName('slider')[0].classList.add("slide-up");
+		}
+		function hideChecklist(){
+			console.log('removeClass')
+			document.getElementsByClassName('slider')[0].classList.remove("slide-up");
 		}
 	</script>
 </body>
