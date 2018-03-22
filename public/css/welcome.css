@@ -1,0 +1,136 @@
+html{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+body{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background-color: rgb(0,0,0);
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	overflow: hidden;
+}
+.background{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-image: url("../images/Backgrounds/1.jpg");
+	opacity: 1;
+	background-size:cover;
+}
+.time{
+	font-size: 200px;
+	font-weight: 700;
+	color: rgba(255,255,255,.85);
+}
+.time-wrapper{
+	width:100%;
+	position: absolute;
+	top: 220px;
+	text-align: center;
+}
+.greeting{
+	margin-top:-15px;
+	font-size: 45px;
+}
+#to-checklist{
+	width: 100%;
+	height: 150px;
+	margin:75px 0px 25px 0px;
+	position: absolute;
+	bottom: 0px;
+	text-align: center;
+}
+#to-main{
+	width: 100%;
+	height: 150px;
+	margin:25px 0px 75px 0px;
+	position: absolute;
+	top: 0px;
+	text-align: center;
+}
+.first-name{
+	display: none;
+}
+.slider{
+	width: 100%;
+	height: 200%;
+	transition: 1s ease-in-out;
+	position: relative;
+	-ms-transform: translate(0px, 0%); /* IE 9 */
+	-webkit-transform: translate(0px, 0%); /* Safari */
+	transform: translate(0px, 0%);
+}
+.top-slide{
+	width: 100%;
+	height: 50%;
+	position: relative;
+}
+.bottom-slide{
+	width: 100%;
+	height: 50%;
+	background-color: rgba(0,0,0,0.5);
+	position: relative;
+	padding: 25px 0px 0px 0px;
+}
+.checklist-wrapper{
+	width: 75%;
+	margin:150px auto;
+}
+.checklist-title{
+	width: 100%;
+	margin:auto;
+	font-size: 60px;
+	font-weight: 400;
+	text-align: center;
+	padding-bottom: 5px;
+	border-bottom: solid white;
+}
+.task-area{
+	width: 100%;
+}
+.task-list{
+	width: 55%;
+	float:left;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+
+}
+.task{
+	width: calc(100% - 50px);
+	height: 74px;
+	padding-left: 50px;
+	line-height: 74px;
+	font-size:32px;
+	font-weight: 300;
+	cursor: pointer;
+}
+.task-properties{
+	width: 45%;
+	float:right;
+	height: 500px;
+	background-color: rgba(255,255,255,0.1);
+}
+.clearfix {
+    overflow: auto;
+}
+.add-task{
+	width: 200px;
+	height: 50px;
+	text-align: center;
+	line-height: 46px;
+	background-color: rgba(236, 240, 241, 0.8);
+	font-size: 20px;
+	color:black;
+	border-radius: 10px;
+	margin:auto;
+	position: relative;
+	top:225px;
+}
+.active-task{
+	background-color: rgba(255,255,255,.1);
+	cursor: auto;
+}
