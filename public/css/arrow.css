@@ -123,7 +123,7 @@
   }
 }
 
-#scroll{
+#scroll-down-main{
   margin: 0;
   border: 2px solid #fff;
   -moz-border-radius: 100%;
@@ -219,7 +219,32 @@
 }
 
 .slide-up{
--ms-transform: translate(0px, -50%); /* IE 9 */
-  -webkit-transform: translate(0px, -50%); /* Safari */
-  transform: translate(0px, -50%);
+-ms-transform: translate(0px, -50%)!important; /* IE 9 */
+  -webkit-transform: translate(0px, -50%) !important; /* Safari */
+  transform: translate(0px, -50%) !important;
+}
+
+#scroll-up-main{
+  margin: 0;
+  border: 2px solid #fff;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  width: 50px;
+  height: 50px;
+  margin-left: -50px;
+  margin-top: -50px;
+  transform: rotate(180deg);
+}
+
+.up-default{
+  background-image: url("https://jamesmuspratt.com/codepen/img/arrow-down.svg");
+   -moz-background-size: 100% auto;
+  -o-background-size: 100% auto;
+  -webkit-background-size: 100% auto;
+  background-size: 100% auto;
+  background-position: center; 
 }
