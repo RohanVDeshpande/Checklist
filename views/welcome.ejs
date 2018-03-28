@@ -47,7 +47,11 @@
 								<p class="submit-task st-save" onclick="formSave()">Save</p>
 								<p class="submit-task" onclick="formReset()">Cancel</p>
 							</div>
-						</form> 
+						</form>
+						<div class="task-info">
+							<p class="task-info-title"></p>
+							<p class="task-info-details"></p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -138,7 +142,23 @@
 	<script type="text/javascript">
 		$('body').on('click', '.task', function () {
 			$(".task").removeClass("active-task");
-			$(this).addClass('active-task')
+			$(this).addClass('active-task');
+			var url = "/profile/gettask";
+			$.ajax({
+	           type: "POST",
+	           url: url,
+	           data: {'id':$(this).attr('id')}, // serializes the form's elements.
+	           success: function(resp)
+	           {
+	           		if(resp!= 'ERR'){
+	           			$('.new-form').fadeOut();
+						$('.add-task').fadeOut();
+	           		}
+					else{
+						alert('Error when getting task!')
+					}
+	           }
+	         });
 	   });
 	</script>
 

@@ -58,5 +58,17 @@ router.post('/reorder_task', urlencodedParser, function(req, res){
     });
 });
 
+router.post('/gettask', urlencodedParser, function(req, res){
+	console.log('POST:');
+	console.log(req.body);
+	var id = req.body.id;
+	if(id<req.body.tasks.length){
+		var gotTask = req.user.tasks[id];
+		res.send(gotTask);
+	}
+	else{
+		res.send('ERR');
+	}
+});
 
 module.exports = router;
