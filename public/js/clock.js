@@ -6,6 +6,9 @@ function getCurrentTime(){
 	if(hours>12){
 		hours -= 12;
 	}
+	else if(hours == 0){
+		hours = 12;
+	}
 	output+= hours;
 	output += ":";
 	var minutes = d.getMinutes();
@@ -28,10 +31,10 @@ function getGreeting(){
 	var hours = d.getHours();
 	var output = "";
 	output += "Good ";
-	if(hours<12){
+	if(hours<12 && hours>3){
 		output+= "morning";
 	}
-	else if(hours<17){
+	else if(hours<17 &&  hours>3){
 		output+= "afternoon";
 	}
 	else{
