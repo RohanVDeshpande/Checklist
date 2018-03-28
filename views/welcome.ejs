@@ -4,6 +4,7 @@
 	<title>Task</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="js/clock.js"></script>
 	<script src="js/background-image.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/welcome.css">
@@ -30,11 +31,23 @@
 				<div class="checklist-title">Tasks</div>
 				<div class="task-area clearfix">
 					<ul class="task-list">
-						<li class="task">HUSH HW</li>
-						<li class="task">Explore Task</li>
+						<% for(var i = 0; i<User.tasks.length; i++){%>
+							<li class="task" id="<%= i %>"><%= User.tasks[i].title %></li>
+						<% } %>
 					</ul>
 					<div class="task-properties">
-						<div class="add-task">New Task</div>
+						<div class="add-task" onclick="newTask()">New Task</div>
+						<form class="new-form" id="form-new">
+							<p class="form-title">Title</p>
+							<input type="text" name="taskTitle" class="input-title">
+							<br>
+							<p class="form-detail">Detail</p>
+							<textarea rows="4" class="detail-elm" name = "taskDetail"></textarea>
+							<div class="form-actions">
+								<p class="submit-task st-save" onclick="formSave()">Save</p>
+								<p class="submit-task" onclick="formReset()">Cancel</p>
+							</div>
+						</form> 
 					</div>
 				</div>
 			</div>
@@ -43,6 +56,51 @@
 
 	</div>
 
+	<script type="text/javascript">
+		
+		function formSave(){
+
+			var url = "/profile/newtask";
+			$.ajax({
+	           type: "POST",
+	           url: url,
+	           data: $('#form-new').serialize(), // serializes the form's elements.
+	           success: function(data)
+	           {
+	               if(data != 'success'){
+	               	alert("Error Saving Task...Try Again!");
+	               }
+	               else{
+	               	$('.new-form').fadeOut();
+	               	$('.add-task').fadeIn();
+	               	displayNewTask($('.input-title').val());
+	               	document.getElementById("form-new").reset();
+	               }
+	           }
+	         });
+	    	return false; // avoid to execute the actual submit of the form.s
+		}
+
+		function displayNewTask(title){
+			var current = "";
+			current = $('.task-list').html();
+			var add = '<li id="'+$('.task').length+'" class="task">'+ title+ '</li>';
+			$('.task-list').html(add + current);
+			$(".task").removeClass("active-task");
+			$(".task").first().addClass("active-task");
+		}
+
+		function formReset(){
+			document.getElementById("form-new").reset();
+			$('.new-form').fadeOut();
+			$('.add-task').fadeIn();
+		}
+		function newTask(){
+			$('.add-task').fadeOut();
+			$('.new-form').fadeIn();
+		}
+
+	</script>
 
 	<script>
 		getGreeting();
@@ -83,5 +141,38 @@
 			$(this).addClass('active-task')
 	   });
 	</script>
+
+	<script type="text/javascript">
+		$( function() {
+			$( "ul" ).sortable({
+			  axis: "y",
+			  stop: function( event, ui ) {
+			  	console.log('Done Sorting!');
+			  	var sortedIDs = $( "ul" ).sortable( "toArray" );
+			  	console.log(sortedIDs);
+			  	var url = "/profile/reorder_task";
+				$.ajax({
+		           type: "POST",
+		           url: url,
+		           data: JSON.stringify(sortedIDs),
+		           contentType: "application/json",
+		           success: function(data)
+		           {
+		               if(data != "OK"){
+		               	alert('List reorder Error!');
+		               }
+		               else{
+		               	for(var i = 0; i<$('.task').length; i++){
+		               		$('.task:eq('+i+')').attr("id",i);
+		               	}
+		               }
+		           }
+		         });
+			  }
+			});
+			$( "ul" ).disableSelection();
+		});
+	</script>
+
 </body>
 </html>

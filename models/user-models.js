@@ -4,9 +4,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
 	username: String,
 	firstName: String,
-	energyPoints: Number,
-	masteryChallenge: Boolean,
-	googleID: String
+	googleID: String,
+	tasks:[]
 });
 
 const User = mongoose.model('user', userSchema);
