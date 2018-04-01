@@ -62,7 +62,7 @@ router.post('/gettask', urlencodedParser, function(req, res){
 	console.log('POST:');
 	console.log(req.body);
 	var id = req.body.id;
-	if(id<req.body.tasks.length){
+	if(id<req.user.tasks.length){
 		var gotTask = req.user.tasks[id];
 		res.send(gotTask);
 	}

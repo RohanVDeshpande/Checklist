@@ -9,6 +9,7 @@
 	<script src="js/background-image.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/welcome.css">
 	<link rel="stylesheet" type="text/css" href="css/arrow.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 	<div class="background"></div>
@@ -29,6 +30,10 @@
 			</div>
 			<div class="checklist-wrapper">
 				<div class="checklist-title">Tasks</div>
+				<div class="tool-panel">
+					<div class="close" onclick="closePropertyPanel()"></div>
+					<i class="material-icons edit-task" style="font-size:36px">mode_edit</i>
+				</div>
 				<div class="task-area clearfix">
 					<ul class="task-list">
 						<% for(var i = 0; i<User.tasks.length; i++){%>
@@ -151,8 +156,13 @@
 	           success: function(resp)
 	           {
 	           		if(resp!= 'ERR'){
+	           			console.log(resp);
 	           			$('.new-form').fadeOut();
 						$('.add-task').fadeOut();
+						$('.task-info-title').text(resp.title);
+						$('.task-info-details').text(resp.details);
+						$('.task-info').fadeIn();
+						$('.tool-panel').addClass('show-tool-panel');
 	           		}
 					else{
 						alert('Error when getting task!')
@@ -160,6 +170,15 @@
 	           }
 	         });
 	   });
+	</script>
+
+	<script type="text/javascript">
+		function closePropertyPanel(){
+			$('.tool-panel').removeClass('show-tool-panel');
+			$('.new-form').fadeOut();
+			$('.task-info').fadeOut();
+			$('.add-task').fadeIn();
+		}
 	</script>
 
 	<script type="text/javascript">
