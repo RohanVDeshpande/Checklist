@@ -33,6 +33,7 @@
 				<div class="tool-panel">
 					<div class="close" onclick="closePropertyPanel()"></div>
 					<i class="material-icons edit-task" style="font-size:36px">mode_edit</i>
+					<i class="material-icons edit-task" onclick="deleteTask()" style="font-size:36px">delete</i>
 				</div>
 				<div class="task-area clearfix">
 					<ul class="task-list">
@@ -211,6 +212,37 @@
 			});
 			$( "ul" ).disableSelection();
 		});
+	</script>
+
+	<script type="text/javascript">
+		function deleteTask(){
+			var elm = $('.active-task');
+			var remove_id = $("li").index(elm);
+			console.log(remove_id);
+			var url = "/profile/deletetask";
+			$.ajax({
+	           type: "POST",
+	           url: url,
+	           data: {'id':remove_id}, // serializes the form's elements.
+	           success: function(resp)
+	           {
+	           		console.log(resp);
+	           		if(resp!= 'ERR'){
+	           			$('.tool-panel').removeClass('show-tool-panel');
+						$('.new-form').fadeOut();
+						$('.active-task').fadeOut();
+						$(".active-task").remove();
+						$('.task-info').fadeOut();
+						$('.add-task').fadeIn();
+	           		}
+					else{
+						alert('Error when getting task!')
+					}
+	           }
+	         });
+		}
+
+
 	</script>
 
 </body>
