@@ -71,4 +71,27 @@ router.post('/gettask', urlencodedParser, function(req, res){
 	}
 });
 
+router.post('/deletetask', urlencodedParser, function(req, res){
+	console.log('Delete Task:');
+	console.log(req.body);
+	var id = req.body.id;
+	if(id<req.user.tasks.length && id>-1){
+		newTaskList = req.user.tasks;
+		newTaskList.splice(id,1);
+		console.log(newTaskList);
+		user.update({_id: req.user._id}, {
+	        tasks: newTaskList
+	    },function(err, numberAffected, rawResponse) {
+	    	if(err){
+	    		console.log('ERR')
+	    		res.send('ERR');
+	    	}
+	    	else{
+	    		console.log('Task List Updated');
+	    		res.send('OK');
+	    	}
+	    });
+	}
+});
+
 module.exports = router;
