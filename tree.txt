@@ -1,0 +1,49 @@
+Directory:
+|
+|   .gitignore
+|   app.js
+|   index.html
+|   output.doc
+|   package-lock.json
+|   package.json
+|   
++---config
+|       keys.js
+|       passport-setup.js
+|       
++---models
+|       user-models.js
+|                  
++---public
+|   +---css
+|   |       arrow.css
+|   |       welcome.css
+|   |       
+|   +---images
+|   |   \---Backgrounds
+|   |           1.jpg
+|   |           10.jpg
+|   |           11.jpg
+|   |           2.jpg
+|   |           3.jpg
+|   |           4.jpg
+|   |           5.jpg
+|   |           6.jpg
+|   |           7.jpg
+|   |           8.jpg
+|   |           9.jpg
+|   |           
+|   \---js
+|           background-image.js
+|           checklistActions.js
+|           clock.js
+|           formActions.js
+|           
++---routes
+|       auth-routes.js
+|       profile-routes.js
+|       
+\---views
+        index.ejs
+        welcome.ejs
+        
