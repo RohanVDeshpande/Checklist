@@ -1,3 +1,5 @@
+//Local Server startup file: app.js
+
 var express = require('express');
 const authRoutes = require('./routes/auth-routes');
 const profileRoutes = require('./routes/profile-routes');
